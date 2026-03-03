@@ -133,7 +133,8 @@ nav {
   align-items: center;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(to bottom, rgba(10, 11, 15, 0.7), var(--bg-dark)), url('/hero.png');
+  background: linear-gradient(to bottom, rgba(10, 11, 15, 0.7), var(--bg-dark)),
+    url("../public/hero.png");
   background-size: cover;
   background-position: center;
 }
