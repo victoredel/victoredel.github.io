@@ -4,10 +4,13 @@ const canvas = document.getElementById('canvas-3d');
 const ctx = canvas.getContext('2d');
 let width, height;
 
-// Particle Sphere Constants
-const PARTICLE_COUNT = 600; 
-const SPHERE_RADIUS = 400; // Slightly smaller
-const MAX_LINE_DIST = 140; // More connections
+// Particle Sphere Constants (Dynamic)
+let PARTICLE_COUNT = 600; 
+let sphereRadius = 400; 
+let maxLineDist = 140; 
+let sphereOffsetX = 0.15; // default desktop
+let isMobile = false;
+
 const particles = [];
 let rotationX = 0;
 let rotationY = 0;
@@ -29,19 +32,19 @@ class Particle {
   }
 
   initMotion() {
-    this.vx = (Math.random() - 0.5) * 0.2; // Very slow
-    this.vy = (Math.random() - 0.5) * 0.2;
-    this.vz = (Math.random() - 0.5) * 0.2;
+    this.vx = (Math.random() - 0.5) * 0.1; // Slower movement
+    this.vy = (Math.random() - 0.5) * 0.1;
+    this.vz = (Math.random() - 0.5) * 0.1;
     this.distMoved = 0;
-    this.maxDist = 10 + Math.random() * 20; // Small distance before changing
+    this.maxDist = 10 + Math.random() * 20; 
   }
 
   setRandomPos() {
     const theta = Math.random() * 2 * Math.PI;
     const phi = Math.acos((Math.random() * 2) - 1);
-    this.x = SPHERE_RADIUS * Math.sin(phi) * Math.cos(theta);
-    this.y = SPHERE_RADIUS * Math.sin(phi) * Math.sin(theta);
-    this.z = SPHERE_RADIUS * Math.cos(phi);
+    this.x = sphereRadius * Math.sin(phi) * Math.cos(theta);
+    this.y = sphereRadius * Math.sin(phi) * Math.sin(theta);
+    this.z = sphereRadius * Math.cos(phi);
   }
 
   update() {
@@ -51,7 +54,7 @@ class Particle {
     this.distMoved += Math.sqrt(this.vx**2 + this.vy**2 + this.vz**2);
 
     if (this.distMoved > this.maxDist) {
-      this.initMotion(); // Change direction
+      this.initMotion();
     }
   }
 
@@ -68,8 +71,11 @@ class Particle {
     z = dy * Math.sin(rx) + z * Math.cos(rx);
 
     const perspective = 800 / (800 - z);
-    const px = x * perspective + width * 0.15;
-    const py = y * perspective + height / 2;
+    
+    // Dynamic positioning based on screen size
+    const px = x * perspective + width * sphereOffsetX;
+    const py = y * perspective + height * (isMobile ? 0.35 : 0.5);
+    
     const size = Math.max(1, 2.5 * perspective);
     const alpha = Math.max(0.05, (perspective - 0.4) * 0.6);
 
@@ -88,6 +94,11 @@ function init() {
 function resize() {
   width = canvas.width = window.innerWidth;
   height = canvas.height = window.innerHeight;
+  
+  isMobile = width < 768;
+  sphereRadius = isMobile ? 300 : 400;
+  maxLineDist = isMobile ? 100 : 140;
+  sphereOffsetX = isMobile ? 0.5 : 0.15;
 }
 
 function animate(time) {
@@ -120,12 +131,12 @@ function animate(time) {
       const dy = p1.py - p2.py;
       const dist = Math.sqrt(dx * dx + dy * dy);
 
-      if (dist < MAX_LINE_DIST) {
+      if (dist < maxLineDist) {
         connectionCounts[i]++;
         connectionCounts[j]++;
         
         // Higher base opacity and clearer color
-        const opacity = Math.min(p1.alpha, p2.alpha) * (1 - dist / MAX_LINE_DIST) * 0.8;
+        const opacity = Math.min(p1.alpha, p2.alpha) * (1 - dist / maxLineDist) * 0.8;
         ctx.strokeStyle = `rgba(180, 200, 255, ${opacity})`;
         ctx.beginPath();
         ctx.moveTo(p1.px, p1.py);

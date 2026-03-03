@@ -60,14 +60,14 @@ header {
   top: 0;
   width: 100%;
   z-index: 1000;
-  padding: 3rem 0; /* More top padding */
+  padding: 2rem 0; /* Reduced from 3rem */
   mix-blend-mode: difference;
 }
 
 .header-inner {
   display: flex;
   justify-content: flex-end; /* Move logo to the right */
-  padding: 0 4rem; /* More horizontal breathing room */
+  padding: 0 3rem; /* Adjusted from 4rem */
   width: 100%;
 }
 
@@ -90,35 +90,85 @@ header {
 }
 
 .nav-btn {
-  background: var(--glass);
-  border: 1px solid var(--glass-border);
-  color: var(--text-main);
-  width: 50px;
-  height: 50px;
+  background: rgba(140, 160, 255, 0.05);
+  border: 2px solid rgba(140, 160, 255, 0.3);
+  color: var(--primary);
+  width: 65px;
+  height: 65px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: var(--transition);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 20px rgba(140, 160, 255, 0.1);
 }
 
 .nav-btn:hover {
   background: var(--primary);
   color: #000;
   border-color: var(--primary);
+  box-shadow: 0 0 30px var(--primary);
+  transform: translateY(-5px);
 }
 
 .nav-btn svg {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
 }
 
 @media (max-width: 768px) {
-  .header-inner { padding: 0 2rem; }
-  .nav-controls { right: 2rem; bottom: 2rem; }
-  .nav-btn { width: 44px; height: 44px; }
+  .header-inner { 
+    padding: 0 1.5rem; 
+    justify-content: center; /* Center logo on very small screens */
+  }
+  
+  .scene-section {
+    justify-content: center; /* Center content on mobile */
+    padding: 10rem 1.5rem 10rem 1.5rem; /* Increased bottom padding to 10rem */
+    text-align: center;
+  }
+
+  .glass {
+    padding: 1.5rem;
+    width: 100%;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 12vw, 3.5rem);
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem !important;
+  }
+
+  .nav-controls { 
+    right: 1.5rem; 
+    bottom: 1.5rem; 
+  }
+  
+  .nav-btn { 
+    width: 55px; 
+    height: 55px; 
+  }
+
+  /* Force grid/flex items to stack on mobile */
+  div[style*="grid-template-columns"], 
+  div[style*="display: grid"] {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  div[style*="display: flex"] {
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+  }
+
+  div[style*="justify-content: flex-end"] {
+    justify-content: center !important;
+  }
 }
 
 /* 3D Scene */
@@ -144,7 +194,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: flex-end; /* Align content to right */
-  padding: 2rem 10% 2rem 40%; /* Significant left padding to avoid sphere overlap */
+  padding: 8rem 10% 10rem 40%; /* Increased bottom padding to 10rem */
   text-align: left; /* Keep text left aligned within the right block */
   opacity: 0;
   pointer-events: none;
