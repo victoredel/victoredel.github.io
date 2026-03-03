@@ -1,0 +1,85 @@
+import "./style.css";
+
+// Inject Content
+document.querySelector("#app").innerHTML = `
+  <section id="home" class="hero container">
+    <div class="hero-content">
+      <h1 class="gradient-text">Construyendo el Futuro Digital.</h1>
+      <p>Hola, soy Victor Edel. Desarrollador enfocado en crear experiencias web excepcionales con un diseño impecable y un rendimiento superior.</p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary">Ver Proyectos</a>
+        <a href="#contact" class="btn" style="color: white; margin-left: 1rem;">Hablemos</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="container">
+    <div class="glass" style="padding: 3rem;">
+      <h2 style="margin-bottom: 1.5rem;">Sobre Mí</h2>
+      <p>Soy un apasionado de la tecnología y el diseño. Mi objetivo es transformar ideas complejas en soluciones digitales elegantes y funcionales. Trabajo con tecnologías modernas para asegurar que cada proyecto sea escalable, rápido y estéticamente sorprendente.</p>
+    </div>
+  </section>
+
+  <section id="projects" class="container">
+    <h2 style="margin-bottom: 3rem; text-align: center;">Proyectos <span class="gradient-text">Destacados</span></h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+      <div class="glass" style="overflow: hidden; padding: 0;">
+        <div style="height: 200px; background: var(--bg-card); display: flex; align-items: center; justify-content: center;">
+          <img src="/ecommerce.png" alt="Proyecto 1" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div style="padding: 1.5rem;">
+          <h3>Plataforma E-commerce</h3>
+          <p style="font-size: 0.9rem; margin: 1rem 0;">Una solución completa de venta online con diseño responsivo y pagos integrados.</p>
+          <a href="#" class="gradient-text" style="text-decoration: none; font-weight: 600;">Ver más →</a>
+        </div>
+      </div>
+      <div class="glass" style="overflow: hidden; padding: 0;">
+        <div style="height: 200px; background: var(--bg-card); display: flex; align-items: center; justify-content: center;">
+          <img src="/dashboard.png" alt="Proyecto 2" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div style="padding: 1.5rem;">
+          <h3>Dashboard Analítico</h3>
+          <p style="font-size: 0.9rem; margin: 1rem 0;">Visualización de datos complejos en tiempo real con una interfaz intuitiva.</p>
+          <a href="#" class="gradient-text" style="text-decoration: none; font-weight: 600;">Ver más →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="container">
+    <div class="glass" style="padding: 3rem; text-align: center;">
+      <h2 style="margin-bottom: 1.5rem;">¿Tienes un Proyecto en Mente?</h2>
+      <p style="margin-bottom: 2.5rem;">Estoy disponible para nuevos desafíos. Hablemos sobre cómo puedo ayudarte a alcanzar tus objetivos.</p>
+      <a href="mailto:contact@victoredel.me" class="btn btn-primary">Enviar Mensaje</a>
+    </div>
+  </section>
+
+  <footer style="padding: 4rem 2rem; border-top: 1px solid var(--glass-border); text-align: center;">
+    <p style="font-size: 0.9rem;">&copy; ${new Date().getFullYear()} Victor Edel. Hecho con ✨ y Vite.</p>
+  </footer>
+`;
+
+// Header Scroll Effect
+window.addEventListener("scroll", () => {
+  const header = document.querySelector("header");
+  if (window.scrollY > 50) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
+  }
+});
+
+// Smooth Scroll for Nav Links
+document.querySelectorAll(".nav-links a, .hero-btns a").forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    const targetId = this.getAttribute("href");
+    const targetElement = document.querySelector(targetId);
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop - 80,
+        behavior: "smooth",
+      });
+    }
+  });
+});
