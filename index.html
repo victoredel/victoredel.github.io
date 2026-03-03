@@ -4,122 +4,123 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Victor Edel | Portafolio Profesional</title>
-    <meta
-      name="description"
-      content="Portafolio profesional de Victor Edel - Desarrollador y Creador. Descubre mis proyectos y habilidades."
-    />
+    <title>Victor Vivas | victoredel</title>
+    <meta name="description" content="Victor Edel Vivas Díaz - victoredel - Full-stack Developer, DevOps & Competitive Programmer portfolio." />
     <link rel="stylesheet" href="./src/style.css" />
   </head>
   <body>
+    <canvas id="canvas-3d"></canvas>
+    <div class="scanlines"></div>
+
     <header>
-      <div class="container">
-        <nav>
-          <div class="logo">VICTOR<span class="gradient-text">EDEL</span></div>
-          <ul class="nav-links">
-            <li><a href="#home">Inicio</a></li>
-            <li><a href="#about">Sobre Mí</a></li>
-            <li><a href="#projects">Proyectos</a></li>
-            <li><a href="#contact">Contacto</a></li>
-          </ul>
-        </nav>
+      <div class="header-inner">
+        <div class="logo"><span class="gradient-text">victor</span>edel</div>
       </div>
     </header>
 
+    <div class="nav-controls">
+      <button id="prev-btn" class="nav-btn" aria-label="Previous Section">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+      </button>
+      <button id="next-btn" class="nav-btn" aria-label="Next Section">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+    </div>
+
     <main id="app">
-      <section id="home" class="hero container">
-        <div class="hero-content">
-          <h1 class="gradient-text">Construyendo el Futuro Digital.</h1>
-          <p>
-            Hola, soy Victor Edel. Desarrollador enfocado en crear experiencias web excepcionales con un diseño impecable y
-            un rendimiento superior.
-          </p>
-          <div class="hero-btns">
-            <a href="#projects" class="btn btn-primary">Ver Proyectos</a>
-            <a href="#contact" class="btn" style="color: white; margin-left: 1rem">Hablemos</a>
-          </div>
-        </div>
-      </section>
-
-      <section id="about" class="container">
-        <div class="glass" style="padding: 3rem">
-          <h2 style="margin-bottom: 1.5rem">Sobre Mí</h2>
-          <p>
-            Soy un apasionado de la tecnología y el diseño. Mi objetivo es transformar ideas complejas en soluciones
-            digitales elegantes y funcionales. Trabajo con tecnologías modernas para asegurar que cada proyecto sea
-            escalable, rápido y estéticamente sorprendente.
-          </p>
-        </div>
-      </section>
-
-      <section id="projects" class="container">
-        <h2 style="margin-bottom: 3rem; text-align: center">
-          Proyectos <span class="gradient-text">Destacados</span>
-        </h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem">
-          <div class="glass" style="overflow: hidden; padding: 0">
-            <div
-              style="
-                height: 200px;
-                background: var(--bg-card);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-              "
-            >
-              <img
-                src="./public/ecommerce.png"
-                alt="Proyecto 1"
-                style="width: 100%; height: 100%; object-fit: cover"
-              />
-            </div>
-            <div style="padding: 1.5rem">
-              <h3>Plataforma E-commerce</h3>
-              <p style="font-size: 0.9rem; margin: 1rem 0">
-                Una solución completa de venta online con diseño responsivo y pagos integrados.
-              </p>
-              <a href="#" class="gradient-text" style="text-decoration: none; font-weight: 600">Ver más →</a>
+      <div id="scene-3d">
+        <section id="home" class="scene-section active">
+          <div class="hero-content">
+            <h1 class="gradient-text">ARCHITECTING<br />THE DIGITAL FUTURE.</h1>
+            <p style="margin-bottom: 3rem; max-width: 800px;">
+              I am <span style="color: white; font-weight: 600;">victoredel</span>. 
+              A Backend Specialist, DevOps Engineer, and Competitive Programmer. 
+            </p>
+            <div class="hero-btns">
+              <a href="#experience" class="btn btn-primary">INITIATE_PATH</a>
             </div>
           </div>
-          <div class="glass" style="overflow: hidden; padding: 0">
-            <div
-              style="
-                height: 200px;
-                background: var(--bg-card);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-              "
-            >
-              <img
-                src="./public/dashboard.png"
-                alt="Proyecto 2"
-                style="width: 100%; height: 100%; object-fit: cover"
-              />
-            </div>
-            <div style="padding: 1.5rem">
-              <h3>Dashboard Analítico</h3>
-              <p style="font-size: 0.9rem; margin: 1rem 0">
-                Visualización de datos complejos en tiempo real con una interfaz intuitiva.
-              </p>
-              <a href="#" class="gradient-text" style="text-decoration: none; font-weight: 600">Ver más →</a>
+        </section>
+
+        <section id="about" class="scene-section">
+          <div class="glass" style="border-left: 4px solid var(--primary); max-width: 900px;">
+            <h2 style="margin-bottom: 2rem;">// PERSONAL_DATA</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
+              <div>
+                <p style="margin-bottom: 1rem;"><span class="date-tag">LOCATION</span> Ankara, Türkiye</p>
+                <p style="margin-bottom: 1rem;"><span class="date-tag">NATIONALITY</span> Cuban</p>
+                <p><span class="date-tag">LANGUAGES</span> Spanish, English (B2), Turkish (A1/A2)</p>
+              </div>
+              <div>
+                <p>
+                  Highly driven Computer Science student at Ankara University. I specialize in building robust server-side logic and automating complex infrastructures.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section id="contact" class="container">
-        <div class="glass" style="padding: 3rem; text-align: center">
-          <h2 style="margin-bottom: 1.5rem">¿Tienes un Proyecto en Mente?</h2>
-          <p style="margin-bottom: 2.5rem">
-            Estoy disponible para nuevos desafíos. Hablemos sobre cómo puedo ayudarte a alcanzar tus objetivos.
-          </p>
-          <a href="mailto:contact@victoredel.me" class="btn btn-primary">Enviar Mensaje</a>
-        </div>
-      </section>
+        <section id="experience" class="scene-section">
+          <div style="max-width: 900px;">
+            <h2 style="margin-bottom: 4rem;">// WORK_EXPERIENCE</h2>
+            <div style="display: flex; flex-direction: column; gap: 2rem;">
+              <div class="glass">
+                <span class="date-tag">2025</span>
+                <h3 style="margin-top: 1rem;">BACKEND & QA</h3>
+                <h4 class="gradient-text">A11YSOLUTIONS</h4>
+                <p style="font-size: 0.9rem; margin-top: 1rem;">Refactored Python modules & Built E2E frameworks with Cypress.</p>
+              </div>
+              <div class="glass">
+                <span class="date-tag">2023-2024</span>
+                <h3 style="margin-top: 1rem;">BACKEND & DEV-OPS</h3>
+                <h4 class="gradient-text">XETID</h4>
+                <p style="font-size: 0.9rem; margin-top: 1rem;">Infrastructure as Code (IaC) & Scalable API Design.</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-      <footer style="padding: 4rem 2rem; border-top: 1px solid var(--glass-border); text-align: center">
-        <p style="font-size: 0.9rem">&copy; 2026 Victor Edel. Hecho con ✨ y Vite.</p>
+        <section id="skills" class="scene-section">
+          <div style="max-width: 900px;">
+            <h2 style="margin-bottom: 4rem;">// CORE_STACK</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+              <div class="glass"><h4>LANGUAGES</h4><p>C++, Python, Go, TS</p></div>
+              <div class="glass"><h4>INFRA</h4><p>Docker, K8s, Terraform</p></div>
+              <div class="glass"><h4>SYSTEMS</h4><p>PostgreSQL, NestJS, ELK</p></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="honors" class="scene-section">
+          <div style="max-width: 900px;">
+            <h2 style="margin-bottom: 4rem;">// HONORS_AWARDS</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+              <div class="glass">
+                <h3 class="gradient-text">IBERO-AMERICAN OLYMPIAD</h3>
+                <p>Bronze Medal (2023)</p>
+              </div>
+              <div class="glass">
+                <h3 class="gradient-text">CUBAN OLYMPIAD</h3>
+                <p>Gold Medal (2022, 2023)</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" class="scene-section">
+          <div class="glass" style="text-align: center; border: 1px solid var(--primary); max-width: 700px;">
+            <h2 style="margin-bottom: 2rem;">// CONTACT_LINK</h2>
+            <p style="font-family: var(--font-mono); margin-bottom: 2rem;">victoredelvivas@gmail.com</p>
+            <div style="display: flex; justify-content: center; gap: 2rem;">
+              <a href="https://linkedin.com/in/victoredel" class="btn btn-primary" target="_blank">LINKEDIN</a>
+              <a href="https://wa.me/905015592575" class="btn" target="_blank">SIGNAL</a>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <footer style="position: fixed; bottom: 2rem; width: 100%; text-align: center; font-family: var(--font-mono); opacity: 0.3; pointer-events: none;">
+        <p>SYSTEM_REVISION_3.0 // victoredel</p>
       </footer>
     </main>
 
