@@ -165,6 +165,20 @@ window.addEventListener('mousemove', (e) => {
   targetRotationX = (e.clientY / height - 0.5) * 0.5;
 });
 
+window.addEventListener('touchmove', (e) => {
+  if(e.touches.length > 0) {
+    targetRotationY = (e.touches[0].clientX / width - 0.5) * 0.5;
+    targetRotationX = (e.touches[0].clientY / height - 0.5) * 0.5;
+  }
+}, { passive: true });
+
+window.addEventListener('touchstart', (e) => {
+  if(e.touches.length > 0) {
+    targetRotationY = (e.touches[0].clientX / width - 0.5) * 0.5;
+    targetRotationX = (e.touches[0].clientY / height - 0.5) * 0.5;
+  }
+}, { passive: true });
+
 window.addEventListener('wheel', (e) => {
   if (isAnimating) return;
   
