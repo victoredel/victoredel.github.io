@@ -1,4 +1,4 @@
-import "./style.css";
+// Portafolio de Victor Edel
 
 // Inject Content
 document.querySelector("#app").innerHTML = `
